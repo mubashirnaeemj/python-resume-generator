@@ -117,7 +117,7 @@ story.append(Paragraph(
     "LLM-powered outreach pipelines to real-time AI voice agents — integrating REST APIs, "
     "CRM platforms (Salesforce), and generative AI at scale. Operates across the full stack: "
     "backend systems (FastAPI, PostgreSQL), workflow automation (n8n, Zapier), and AI APIs "
-    "(OpenAI, ElevenLabs, Deepgram). Builds automation that runs in production, not just demos.",
+    "(OpenAI, Anthropic Claude, ElevenLabs, Deepgram). Builds automation that runs in production, not just demos.",
     summary_style))
 
 story += section_header("Professional Experience")
@@ -192,7 +192,7 @@ story.append(Paragraph(
     "effectively on live calls.",
     proj_body_style))
 story.append(Paragraph(
-    "<font color='#6b7280'><i>Electron · Node.js · Deepgram API · OpenAI · "
+    "<font color='#6b7280'><i>Electron · Node.js · Deepgram API · Anthropic Claude API · "
     "Salesforce CRM API</i></font>",
     proj_body_style))
 story.append(Spacer(1, 4))
