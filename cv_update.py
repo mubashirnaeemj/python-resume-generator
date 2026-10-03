@@ -2,13 +2,14 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import mm
 from reportlab.lib import colors
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable,
+    KeepTogether
 )
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT, TA_JUSTIFY
 
 PAGE_W, PAGE_H = A4
-MARGIN = 14 * mm
+MARGIN = 12.5 * mm
 
 DARK      = colors.HexColor("#1a1a2e")
 ACCENT    = colors.HexColor("#2563eb")
@@ -26,29 +27,29 @@ name_style      = S("name",      fontName="Helvetica-Bold", fontSize=20,
                      textColor=DARK, leading=24, alignment=TA_CENTER)
 contact_style   = S("contact",   fontSize=7.8, textColor=LIGHT,
                      alignment=TA_CENTER, leading=11)
-summary_style   = S("summary",   fontSize=8.2, leading=12.5,
+summary_style   = S("summary",   fontSize=8.2, leading=11.6,
                      textColor=MID, alignment=TA_JUSTIFY)
 section_style   = S("section",   fontName="Helvetica-Bold", fontSize=8,
-                     textColor=ACCENT, leading=10, spaceBefore=5)
+                     textColor=ACCENT, leading=10, spaceBefore=2)
 job_title_style = S("jobtitle",  fontName="Helvetica-Bold", fontSize=8.8,
                      textColor=DARK, leading=11)
 company_style   = S("company",   fontSize=8.2, textColor=LIGHT, leading=10)
-bullet_style    = S("bullet",    fontSize=8.1, leading=11.5, leftIndent=9,
+bullet_style    = S("bullet",    fontSize=8.1, leading=10.8, leftIndent=9,
                      firstLineIndent=-7, textColor=MID, alignment=TA_JUSTIFY)
 proj_name_style = S("projname",  fontName="Helvetica-Bold", fontSize=8.5,
                      textColor=DARK, leading=11)
-proj_body_style = S("projbody",  fontSize=8, leading=11.5,
+proj_body_style = S("projbody",  fontSize=8, leading=10.6,
                      textColor=MID, alignment=TA_JUSTIFY)
 skill_label     = S("skilllbl",  fontName="Helvetica-Bold", fontSize=8,
                      textColor=DARK, leading=11)
-skill_val       = S("skillval",  fontSize=8, textColor=MID, leading=11)
-cert_style      = S("cert",      fontSize=8, textColor=MID, leading=11)
+skill_val       = S("skillval",  fontSize=8, textColor=MID, leading=10.4)
+cert_style      = S("cert",      fontSize=8, textColor=MID, leading=10.4)
 date_style      = S("date",      fontSize=7.8, textColor=LIGHT,
                      alignment=TA_RIGHT, leading=11)
 
 def section_header(title):
     return [
-        Spacer(1, 4),
+        Spacer(1, 2),
         Paragraph(title.upper(), section_style),
         HRFlowable(width="100%", thickness=0.6, color=RULE_CLR,
                    spaceAfter=3, spaceBefore=1),
@@ -85,7 +86,7 @@ def bullet(text):
 
 def skill_row(label, value):
     data = [[Paragraph(label, skill_label), Paragraph(value, skill_val)]]
-    t = Table(data, colWidths=["28%", "72%"])
+    t = Table(data, colWidths=["23%", "77%"])
     t.setStyle(TableStyle([
         ("VALIGN",    (0,0), (-1,-1), "TOP"),
         ("LEFTPADDING",  (0,0), (-1,-1), 0),
@@ -94,6 +95,10 @@ def skill_row(label, value):
         ("BOTTOMPADDING",(0,0), (-1,-1), 2),
     ]))
     return t
+
+def tools_line(text):
+    return Paragraph(
+        f"<font color='#6b7280'><i>{text}</i></font>", proj_body_style)
 
 story = []
 story.append(Spacer(1, 1))
@@ -111,13 +116,13 @@ story.append(HRFlowable(width="100%", thickness=1.2, color=DARK,
 
 story += section_header("Professional Summary")
 story.append(Paragraph(
-    "AI Automation Engineer with 1+ year of production experience designing and deploying "
-    "enterprise-grade AI workflows that eliminate manual processes and drive measurable "
-    "business outcomes. Proven ability to architect end-to-end automation systems — from "
-    "LLM-powered outreach pipelines to real-time AI voice agents — integrating REST APIs, "
-    "CRM platforms (Salesforce), and generative AI at scale. Operates across the full stack: "
-    "backend systems (FastAPI, PostgreSQL), workflow automation (n8n, Zapier), and AI APIs "
-    "(OpenAI, Anthropic Claude, ElevenLabs, Deepgram). Builds automation that runs in production, not just demos.",
+    "AI Automation Developer at Axioware (since Jan 2026), building LLM-powered integrations "
+    "with Salesforce: a FastAPI, PostgreSQL and Celery platform running up to 500 ElevenLabs "
+    "voice-agent calls a day, a real-time sales-assist desktop app, and n8n lead-enrichment "
+    "workflows. Backed by data training: a 5-month Jawan Pakistan analytics program, Google "
+    "Data Analytics and SQL certificates, and Power BI, Tableau and pandas projects. Final-year "
+    "project: a medical-imaging web app (DenseNet121, 93% test accuracy, Flask + MySQL). "
+    "BS in Artificial Intelligence, SMIU (2026).",
     summary_style))
 
 story += section_header("Professional Experience")
@@ -149,8 +154,6 @@ story.append(bullet(
     "and auto-distributed content across Instagram, Facebook, and YouTube — validated "
     "across 50+ videos during testing."))
 
-story.append(Spacer(1, 5))
-
 story += section_header("Education")
 
 edu_data = [
@@ -178,11 +181,10 @@ story.append(Paragraph(
     "Celery-scheduled retry logic, post-call LLM analysis, and automatic sync into "
     "Salesforce Chatter and Google Sheets.",
     proj_body_style))
-story.append(Paragraph(
-    "<font color='#6b7280'><i>FastAPI · PostgreSQL · Celery · Railway · ElevenLabs · "
-    "Deepgram · Salesforce API · Google Sheets API · OpenAI · Python</i></font>",
-    proj_body_style))
-story.append(Spacer(1, 4))
+story.append(tools_line(
+    "FastAPI · PostgreSQL · Celery · Railway · ElevenLabs · "
+    "Deepgram · Salesforce API · Google Sheets API · OpenAI · Python"))
+story.append(Spacer(1, 3))
 
 story.append(proj_row("Real-Time AI Calling Assistant (Electron Desktop App)", "Mar 2026"))
 story.append(Paragraph(
@@ -191,24 +193,56 @@ story.append(Paragraph(
     "context pulled by phone number lookup — enabling sales agents to close leads more "
     "effectively on live calls.",
     proj_body_style))
-story.append(Paragraph(
-    "<font color='#6b7280'><i>Electron · Node.js · Deepgram API · Anthropic Claude API · "
-    "Salesforce CRM API</i></font>",
-    proj_body_style))
-story.append(Spacer(1, 4))
+story.append(tools_line(
+    "Electron · Node.js · Deepgram API · Anthropic Claude API · "
+    "Salesforce CRM API"))
+story.append(Spacer(1, 3))
 
-story.append(proj_row("AI-Based Ulcer Classification System (Final Year Project)", "2025 – 2026"))
-story.append(Paragraph(
-    "Built a full-stack diagnostic support system for 8-class GI ulcer classification from "
-    "endoscopic images — fine-tuned a DenseNet121 model to 92%+ test accuracy with Grad-CAM "
-    "explainability, shipped a Flask + MySQL backend with role-based doctor/admin portals, "
-    "and automated patient reporting via n8n (PDF generation, email delivery, Google Sheets "
-    "logging). Usability-tested with 14 medical professionals (82.8 SUS score).",
-    proj_body_style))
-story.append(Paragraph(
-    "<font color='#6b7280'><i>TensorFlow/Keras · DenseNet121 · Grad-CAM · Flask · MySQL · "
-    "n8n · JavaScript</i></font>",
-    proj_body_style))
+# ---- Final Year Project (updated) ----
+story.append(KeepTogether([
+    proj_row("AI-Based Ulcer Classification System (Final Year Project)", "2025 – 2026"),
+    Paragraph(
+        "Built a web app for 8-class GI endoscopy image classification — fine-tuned "
+        "DenseNet121 in two phases to 93% test accuracy (225/242 images, macro F1 0.93), "
+        "with Grad-CAM heatmaps and a 65% confidence threshold. Flask + MySQL backend "
+        "(4-table SQLAlchemy schema, doctor/admin portals) stores each prediction and "
+        "emails a ReportLab PDF report to the patient through an n8n webhook.",
+        proj_body_style),
+    tools_line(
+        "TensorFlow/Keras · DenseNet121 · Grad-CAM · Flask · SQLAlchemy · MySQL · "
+        "ReportLab · n8n"),
+]))
+
+# ---- Jawan Pakistan data analytics projects (new) ----
+jp_header = section_header("Data Analytics Projects")
+jp_sub = Paragraph(
+    "Certified Data Analytics Course Using AI ·  "
+    "<a href='https://github.com/mubashirnaeemj/Data-Analytics-Projects'>"
+    "<font color='#2563eb'>Code on GitHub</font></a>",
+    company_style)
+
+story.append(KeepTogether(jp_header + [jp_sub, Spacer(1, 2),
+    proj_row("Retail Sales Dashboard — Power BI and Tableau", ""),
+    Paragraph(
+        "Built the same dashboard in both tools on 99,457 retail transactions across 10 "
+        "malls: KPI cards, Top-5 mall and category views, payment, gender and monthly "
+        "charts, slicers and filters. Clothing drives 45% of revenue, two malls 40%, and "
+        "Technology 23% from just 5% of transactions.",
+        proj_body_style),
+    tools_line("Power BI · DAX · Power Query · Tableau · Excel"),
+]))
+story.append(Spacer(1, 3))
+
+story.append(KeepTogether([
+    proj_row("Python Data Projects — PS4 Games Sales Analysis and Flipkart Scraper", ""),
+    Paragraph(
+        "Cleaned and explored 1,034 PS4 games in pandas with 8 Matplotlib/Seaborn charts: "
+        "Activision led publishers, Action (23.0%) edged Shooter (22.7%), and "
+        "North America–Europe sales correlated at 0.82 versus about 0.4 for Japan. Plus "
+        "a Selenium scraper for 40 Flipkart listings.",
+        proj_body_style),
+    tools_line("Python · pandas · Matplotlib · Seaborn · Selenium · Jupyter"),
+]))
 
 story += section_header("Skills")
 
@@ -217,26 +251,38 @@ story.append(skill_row("AI & Automation:",
     "Prompt Engineering · Generative AI · LLM Integration · AI Agent Development"))
 story.append(skill_row("Backend & Integration:",
     "FastAPI · Python · PostgreSQL · SQLite · REST APIs · Webhooks · "
-    "Salesforce API · Google Sheets API · Pandas"))
+    "Salesforce API · Google Sheets API"))
+story.append(skill_row("Data & ML:",
+    "SQL · MySQL · pandas · Matplotlib · Seaborn · Tableau · DAX · Selenium · "
+    "TensorFlow/Keras"))
 story.append(skill_row("Frontend & Delivery:",
-    "Electron · Next.js · Tailwind CSS · Lovable · Power BI"))
-story.append(skill_row("Cloud & Infrastructure:",
-    "Railway (production deployment) · AWS (in progress)"))
+    "Electron · Next.js · Tailwind CSS · Lovable · Power BI · Railway (production deployment)"))
 
-story += section_header("Certifications & Leadership")
+cert_header = section_header("Certifications & Leadership")
 
-cert_lead_data = [[
+cert_cell = [
     Paragraph(
-        "<b>Google Data Analytics Professional Certificate</b> — Coursera, Feb 2025",
+        "<b>Google Data Analytics Professional Certificate</b> — Coursera, Feb 2025 "
+        "(<a href='https://coursera.org/verify/professional-cert/QWMM3GLRPHDE'>"
+        "<font color='#2563eb'>verify</font></a>)",
         cert_style),
+    Spacer(1, 1),
     Paragraph(
-        "<b>AI Student Club (AISC)</b> — Lead Member, Nov 2024 – Feb 2025<br/>"
-        "Organised technical workshops (Python, SQL, ML) for 20+ students; led "
-        "5-person team building the sign language CV system — owned task allocation, "
-        "drove model training pipeline, and delivered faculty presentation.",
+        "<b>Certified Data Analytics Course Using AI</b> — Jawan Pakistan, "
+        "Aug – Dec 2024",
         cert_style),
-]]
-cl_t = Table(cert_lead_data, colWidths=["46%", "54%"])
+    Spacer(1, 2),
+    Paragraph("<b>Intermediate SQL</b> — DataCamp, Oct 2024", cert_style),
+]
+lead_cell = Paragraph(
+    "<b>AI Student Club (AISC)</b> — Lead Member, Nov 2024 – Feb 2025<br/>"
+    "Organised technical workshops (Python, SQL, ML) for 20+ students; led "
+    "5-person team building the sign language CV system — owned task allocation, "
+    "drove model training pipeline, and delivered faculty presentation.",
+    cert_style)
+
+cert_lead_data = [[cert_cell, lead_cell]]
+cl_t = Table(cert_lead_data, colWidths=["48%", "52%"])
 cl_t.setStyle(TableStyle([
     ("VALIGN",    (0,0), (-1,-1), "TOP"),
     ("LEFTPADDING",  (0,0), (-1,-1), 0),
@@ -244,13 +290,13 @@ cl_t.setStyle(TableStyle([
     ("TOPPADDING",   (0,0), (-1,-1), 0),
     ("BOTTOMPADDING",(0,0), (-1,-1), 0),
 ]))
-story.append(cl_t)
+story.append(KeepTogether(cert_header + [cl_t]))
 
 output_path = "CV.pdf"
 doc = SimpleDocTemplate(
     str(output_path), pagesize=A4,
     leftMargin=MARGIN, rightMargin=MARGIN,
-    topMargin=12 * mm, bottomMargin=10 * mm,
+    topMargin=9 * mm, bottomMargin=8 * mm,
 )
 doc.build(story)
 print(f"✓ PDF written to: {output_path}")
