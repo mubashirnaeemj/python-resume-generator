@@ -110,7 +110,7 @@ story.append(Spacer(1, 1))
 story.append(Paragraph("MUBASHIR NAEEM JANJUA", name_style))
 story.append(Spacer(1, 3))
 story.append(Paragraph(
-    "mubashirnaeemj@gmail.com  ·  Islamabad, Pakistan  ·  +92 330 381 8395  ·  "
+    "mubashirnaeemj@gmail.com  ·  Karachi, Pakistan  ·  +92 330 381 8395  ·  "
     "<a href='https://www.linkedin.com/in/mubashir-naeem-251595280/'>LinkedIn</a>  ·  "
     "<a href='https://github.com/mubashirnaeemj'>GitHub</a>  ·  "
     "<a href='https://mubashir-naeem-janjua.lovable.app'>Portfolio</a>",
@@ -121,12 +121,12 @@ story.append(HRFlowable(width="100%", thickness=1.2, color=DARK,
 
 story += section_header("Professional Summary")
 story.append(Paragraph(
-    "AI Automation Developer with 1+ year of production experience building LLM-powered integrations "
-    "with Salesforce: a FastAPI, PostgreSQL and Celery platform that has placed 8,000+ "
-    "ElevenLabs voice-agent calls, a real-time sales-assist app, and n8n lead-enrichment and "
-    "SMS follow-up workflows. Backed by data training (5-month Jawan Pakistan analytics program, Google Data "
-    "Analytics and SQL certificates, Power BI, Tableau and pandas projects) and a final-year "
-    "medical-imaging web app (DenseNet121, 93% test accuracy, Flask + MySQL).",
+    "AI Automation Developer and BS Artificial Intelligence graduate (SMIU), building AI-driven "
+    "integrations and data systems at Axioware since January 2026. Designed the dispatch and data "
+    "layer of a FastAPI, Celery and PostgreSQL calling platform that placed 5,400+ ElevenLabs calls "
+    "to 1,577 Salesforce leads, and built n8n workflows for lead enrichment, Claude-based SMS "
+    "qualification and call scoring. Final-year project: a medical-imaging web app (DenseNet121, "
+    "93% test accuracy, Flask + MySQL).",
     summary_style))
 
 story += section_header("Professional Experience")
@@ -134,23 +134,24 @@ story += section_header("Professional Experience")
 story.append(job_row("AI Automation Developer — Axioware", "Jan 2026 – Present"))
 story.append(Spacer(1, 2))
 story.append(bullet(
-    "Built an n8n lead-enrichment pipeline (Jan – Feb 2026): researched each business via Google "
-    "and web data, used OpenAI to write pain points, value propositions, objection handlers and "
-    "call, email and SMS scripts, scored and tiered each lead, stored it in Airtable and added "
-    "notes in Close.com. API calls had retries and central logging, with single-lead and batch modes."))
+    "Automated lead enrichment in n8n (Jan – Feb 2026): researched each business through Google and "
+    "web data, generated pain points, value propositions, objection handlers and call, email and SMS "
+    "scripts with OpenAI, scored and tiered every lead, and wrote results to Airtable and Close.com, "
+    "with retries, central logging and single-lead or batch runs."))
 story.append(Spacer(1, 1.5))
 story.append(bullet(
     "Built the dispatch and data layer of an AI outbound-calling platform (FastAPI, Celery, "
-    "PostgreSQL, ElevenLabs): 8,000+ calls placed May – Sep 2026 (peak 1,275 in a day), with "
-    "post-call LLM analysis synced to Salesforce, Google Sheets and PostgreSQL."))
+    "PostgreSQL, ElevenLabs): 5,400+ calls placed to 1,577 Salesforce leads (peak 1,275 in one day), "
+    "with post-call LLM analysis stored for 3,600+ calls and synced to Salesforce and Google Sheets."))
 story.append(Spacer(1, 1.5))
 story.append(bullet(
-    "Built a real-time sales-assist desktop app (Electron): live dual-channel audio transcribed "
-    "with Deepgram, LLM-suggested replies, and Salesforce lead context pulled by phone number."))
+    "Developed a real-time sales-assist desktop app (Electron) that transcribes both sides of a live "
+    "call with Deepgram and pulls the caller's Salesforce record by phone number to suggest replies "
+    "with an LLM."))
 story.append(Spacer(1, 1.5))
 story.append(bullet(
-    "Built a generative-AI video pipeline (Zapier, OpusClip, ChatGPT) that turns raw footage into "
-    "platform-ready clips in ~5 minutes and auto-posts to Instagram, Facebook and YouTube "
+    "Automated video repurposing with Zapier, OpusClip and ChatGPT: raw footage became "
+    "platform-ready clips in ~5 minutes each and was auto-posted to Instagram, Facebook and YouTube "
     "(tested on 50+ videos)."))
 
 story += section_header("Education")
@@ -173,13 +174,13 @@ story.append(edu_t)
 
 story += section_header("Key Projects")
 
-story.append(proj_row("AI-Powered Calling Platform + Call Rubric Scoring", "Mar 2026"))
+story.append(proj_row("AI Calling Platform + Call Rubric Scoring", "Mar 2026"))
 story.append(Paragraph(
-    "Backend for an AI outbound-calling service: Celery-beat dispatch with per-job time windows, "
-    "local-presence caller IDs, voicemail redial, and ElevenLabs post-call webhooks storing calls "
-    "in a 9-table PostgreSQL schema and syncing to Salesforce and Sheets. Call-scoring pipeline "
-    "(smrtPhone, faster-whisper, LLM rubric, Chatter post). React/TypeScript scheduler and "
-    "analytics dashboard (Lovable base, 5 s refresh).",
+    "Built the Celery-beat dispatch (per-job time windows, voicemail redial, 85 local-presence caller "
+    "IDs) and ElevenLabs post-call webhooks that write each call to a 9-table PostgreSQL schema and "
+    "sync to Salesforce and Sheets. Added a rep-call scoring pipeline (smrtPhone, faster-whisper, LLM "
+    "rubric, Chatter post) and a React/TypeScript admin dashboard on a Lovable base (9 KPI cards, "
+    "2 charts, 5 s refresh).",
     proj_body_style))
 story.append(tools_line(
     "FastAPI · Celery · PostgreSQL · ElevenLabs · Salesforce · Claude · OpenAI · "
@@ -189,10 +190,10 @@ story.append(Spacer(1, 2))
 story.append(KeepTogether([
     proj_row("AI Lead Follow-up Automation (n8n)", "April 2026"),
     Paragraph(
-        "Five connected n8n workflows around an ElevenLabs calling setup: business-hours routing of "
-        "inbound calls, Zapier lead intake with local-presence outbound calls, a Twilio SMS agent "
-        "(Claude Sonnet 4.6 classifies replies, qualifies sellers, extracts lead data), Calendly "
-        "booking links, and post-call Claude scoring logged to Google Sheets and Salesforce Chatter.",
+        "Built five n8n workflows (75+ nodes) around an ElevenLabs calling setup: inbound call routing "
+        "by business hours, outbound calls from 242 local-presence numbers, a Twilio SMS agent (Claude "
+        "Sonnet 4.6 classifies replies, qualifies sellers, extracts lead data), Calendly booking links, "
+        "and post-call Claude scoring logged to Google Sheets and Salesforce Chatter.",
         proj_body_style),
     tools_line("n8n · ElevenLabs · Twilio · Claude · Calendly · Salesforce · Google Sheets · Zapier"),
 ]))
@@ -200,35 +201,29 @@ story.append(Spacer(1, 2))
 
 story.append(proj_row("Real-Time AI Calling Assistant (Electron Desktop App)", "May 2026"))
 story.append(Paragraph(
-    "Windows desktop app capturing live dual-channel audio, transcribing via Deepgram "
-    "in real-time, and surfacing LLM-generated dialogue suggestions with Salesforce lead "
-    "context pulled by phone number lookup — enabling sales agents to close leads more "
-    "effectively on live calls.",
+    "Developed a Windows desktop app that captures live dual-channel audio, transcribes it with "
+    "Deepgram in real time, and shows LLM-generated reply suggestions beside the caller's Salesforce "
+    "record, found by phone number.",
     proj_body_style))
 story.append(tools_line(
-    "Electron · Node.js · Deepgram API · Anthropic Claude API · "
-    "Salesforce CRM API"))
+    "Electron · Node.js · Deepgram API · Anthropic Claude API · Salesforce CRM API"))
 story.append(Spacer(1, 3))
 
-# ---- Final Year Project (updated) ----
 story.append(KeepTogether([
     proj_row("AI-Based Ulcer Classification System (Final Year Project)", "2025 – 2026"),
     Paragraph(
-        "Built a web app for 8-class GI endoscopy image classification — fine-tuned "
-        "DenseNet121 in two phases to 93% test accuracy (225/242 images, macro F1 0.93), "
-        "with Grad-CAM heatmaps and a 65% confidence threshold. Flask + MySQL backend "
-        "(4-table SQLAlchemy schema, doctor/admin portals) stores each prediction and "
-        "emails a ReportLab PDF report to the patient through an n8n webhook.",
+        "Fine-tuned DenseNet121 in two phases on 8 GI endoscopy classes to 93% test accuracy (225/242 "
+        "images, macro F1 0.93) and built a Flask + MySQL web app (4 tables, doctor/admin roles) that "
+        "rejects predictions under 65% confidence, shows Grad-CAM heatmaps, and emails a PDF report "
+        "to the patient through an n8n webhook.",
         proj_body_style),
     tools_line(
         "TensorFlow/Keras · DenseNet121 · Grad-CAM · Flask · SQLAlchemy · MySQL · "
         "ReportLab · n8n"),
 ]))
 
-# ---- Jawan Pakistan data analytics projects (new) ----
 jp_head_tbl = Table([[
-    Paragraph("DATA ANALYTICS PROJECTS",
-              section_style),
+    Paragraph("DATA ANALYTICS PROJECTS", section_style),
     Paragraph("<a href='https://github.com/mubashirnaeemj/Data-Analytics-Projects'>"
               "<font color='#2563eb'>Code on GitHub</font></a>", date_style),
 ]], colWidths=["80%", "20%"])
@@ -246,10 +241,9 @@ jp_header = [Spacer(1, 2), jp_head_tbl,
 story.append(KeepTogether(jp_header + [
     proj_row("Retail Sales Dashboard — Power BI and Tableau", ""),
     Paragraph(
-        "Built the same dashboard in both tools on 99,457 retail transactions across 10 "
-        "malls: KPI cards, Top-5 mall and category views, payment, gender and monthly "
-        "charts, slicers and filters. Clothing drives 45% of revenue, two malls 40%, and "
-        "Technology 23% from just 5% of transactions.",
+        "Built the same dashboard in Power BI and Tableau on 99,457 retail transactions from 10 malls "
+        "(KPI cards, Top-5 views, slicers, filters). Found that Clothing drove 45% of revenue, two "
+        "malls 40%, and Technology 23% from only 5% of transactions.",
         proj_body_style),
     tools_line("Power BI · DAX · Power Query · Tableau · Excel"),
 ]))
@@ -258,26 +252,24 @@ story.append(Spacer(1, 3))
 story.append(KeepTogether([
     proj_row("Python Data Projects — PS4 Games Sales Analysis and Flipkart Scraper", ""),
     Paragraph(
-        "Cleaned and explored 1,034 PS4 games in pandas with 8 Matplotlib/Seaborn charts: "
-        "Activision led publishers, Action (23.0%) edged Shooter (22.7%), and "
-        "North America–Europe sales correlated at 0.82 versus about 0.4 for Japan. Plus "
-        "a Selenium scraper for 40 Flipkart listings.",
+        "Cleaned and analyzed 1,034 PS4 games in pandas with 8 Matplotlib/Seaborn charts: Action "
+        "(23.0%) narrowly led Shooter (22.7%), and North America–Europe sales correlated at 0.82 "
+        "versus about 0.4 for Japan. Also scraped 40 Flipkart listings with Selenium.",
         proj_body_style),
     tools_line("Python · pandas · Matplotlib · Seaborn · Selenium · Jupyter"),
 ]))
 
 story += section_header("Skills")
 
-story.append(skill_row("AI & Automation:",
-    "n8n · Zapier · Celery · OpenAI · Claude · ElevenLabs Voice Agents · Deepgram STT · LLM Integration"))
-story.append(skill_row("Backend & Integration:",
-    "FastAPI · Python · PostgreSQL · SQLite · REST APIs · Webhooks · "
-    "Salesforce API · Google Sheets API"))
-story.append(skill_row("Data & ML:",
-    "SQL · MySQL · pandas · Matplotlib · Seaborn · Tableau · DAX · Selenium · "
-    "TensorFlow/Keras"))
-story.append(skill_row("Frontend & Delivery:",
-    "Electron · React · TypeScript · Tailwind CSS · Lovable · Power BI · Railway (production deployment)"))
+story.append(skill_row("Backend & Data:",
+    "Python · SQL · PostgreSQL · MySQL · FastAPI · Flask · Celery · SQLAlchemy · REST APIs · Webhooks"))
+story.append(skill_row("AI & ML:",
+    "Claude and OpenAI APIs · LLM prompt design · TensorFlow/Keras · Grad-CAM · faster-whisper"))
+story.append(skill_row("Integration & Automation:",
+    "n8n · Zapier · Salesforce · ElevenLabs · Twilio · Calendly · Google Sheets API · Selenium"))
+story.append(skill_row("Analytics & Frontend:",
+    "pandas · Power BI · Tableau · DAX · Matplotlib · Seaborn · React · TypeScript · Tailwind · "
+    "Electron · Railway"))
 
 cert_header = section_header("Certifications & Leadership")
 
@@ -297,9 +289,9 @@ cert_cell = [
 ]
 lead_cell = Paragraph(
     "<b>AI Student Club (AISC)</b> — Lead Member, Nov 2024 – Feb 2025<br/>"
-    "Organised technical workshops (Python, SQL, ML) for 20+ students; led "
-    "5-person team building the sign language CV system — owned task allocation, "
-    "drove model training pipeline, and delivered faculty presentation.",
+    "Led a 5-person team building a sign-language recognition system (task allocation, "
+    "model-training pipeline, faculty presentation) and ran Python, SQL and ML workshops "
+    "for 20+ students.",
     cert_style)
 
 cert_lead_data = [[cert_cell, lead_cell]]
